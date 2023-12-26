@@ -1,0 +1,23 @@
+This code performs a basic natural language processing (NLP) task of training a machine learning model to classify resumes as matching a certain criteria or not. The goal is to read in a set of PDF resumes, process the text data to remove unwanted characters and transform it into numerical features, split the data into training and testing sets, train a support vector machine (SVM) classifier on the training set, and evaluate the accuracy of the classifier on the testing set.
+
+Here's a breakdown of the code:
+
+First, it imports necessary libraries including PyPDF2 for processing PDF files, pandas for working with data frames, TfidfVectorizer for extracting features from text data, train_test_split for splitting the data into training and testing sets, and SVC for creating and training a support vector machine model.
+
+The code defines a function called "extract_text_from_pdf" which reads in a PDF file and extracts the text from it. It converts the text to lowercase, removes punctuation, and removes numbers.
+
+The code defines a path to a directory containing PDF resumes and loops through the files in that directory to extract the text using the "extract_text_from_pdf" function. The extracted text is stored in a list called "resume_texts".
+
+The code creates a pandas data frame called "resume_data" with two columns: "text" which contains the preprocessed resume text, and "label" which contains the value "match" for all resumes.
+
+The code uses the TfidfVectorizer to transform the resume text into numerical features that can be used by the machine learning model.
+
+The data is split into a training set and a testing set using train_test_split.
+
+An SVM model is created and trained on the training set using the "fit" method of the SVC class.
+
+The accuracy of the model is evaluated on the testing set using the "predict" method of the SVC class and the accuracy_score function from the metrics module.
+
+Finally, the code prints out the accuracy of the model on the testing set.
+
+However, there is an error in the code, which occurs because there is only one label value ('match') in the 'label' column of the data frame. This causes an error when trying to fit the SVM model, which requires at least two unique label values to train a classification model.
